@@ -1,6 +1,6 @@
 # CSS Questions
 
-Answers to [Front-end Job Interview Questions - CSS Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/questions/css-questions.md). Pull requests for suggestions and corrections are welcome!
+Answers to [Front-end Job Interview Questions - CSS Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/src/questions/css-questions.md). Pull requests for suggestions and corrections are welcome!
 
 * [What is CSS selector specificity and how does it work?](#what-is-css-selector-specificity-and-how-does-it-work)
 * [What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?](#whats-the-difference-between-resetting-and-normalizing-css-which-would-you-choose-and-why)
@@ -77,7 +77,7 @@ The CSS `clear` property can be used to be positioned below `left`/`right`/`both
 
 If a parent element contains nothing but floated elements, its height will be collapsed to nothing. It can be fixed by clearing the float after the floated elements in the container but before the close of the container.
 
-The `.clearfix` hack uses a clever CSS pseudo selector (`:after`) to clear floats. Rather than setting the overflow on the parent, you apply an additional class `clearfix` to it. Then apply this CSS:
+The `.clearfix` hack uses a clever CSS [pseudo selector](#describe-pseudo-elements-and-discuss-what-they-are-used-for) (`:after`) to clear floats. Rather than setting the overflow on the parent, you apply an additional class `clearfix` to it. Then apply this CSS:
 
 ```css
 .clearfix:after {
@@ -226,7 +226,7 @@ Yes, there are several ways to color shapes (including specifying attributes on 
 Basic coloring can be done by setting two attributes on the node: `fill` and `stroke`. `fill` sets the color inside the object and `stroke` sets the color of the line drawn around the object. You can use the same CSS color naming schemes that you use in HTML, whether that's color names (that is `red`), RGB values (that is `rgb(255,0,0)`), Hex values, RGBA values, etc.
 
 ```html
-<rect x="10" y="10" width="100" height="100" stroke="blue" 
+<rect x="10" y="10" width="100" height="100" stroke="blue"
   fill="purple" fill-opacity="0.5" stroke-opacity="0.8"/>
 ```
 
@@ -314,7 +314,7 @@ Use `@font-face` and define `font-family` for different `font-weight`s.
 
 ### Explain how a browser determines what elements match a CSS selector.
 
-This part is related to the above about writing efficient CSS. Browsers match selectors from rightmost (key selector) to left. Browsers filter out elements in the DOM according to the key selector and traverse up its parent elements to determine matches. The shorter the length of the selector chain, the faster the browser can determine if that element matches the selector.
+This part is related to the above about [writing efficient CSS](#what-are-some-of-the-gotchas-for-writing-efficient-css). Browsers match selectors from rightmost (key selector) to left. Browsers filter out elements in the DOM according to the key selector and traverse up its parent elements to determine matches. The shorter the length of the selector chain, the faster the browser can determine if that element matches the selector.
 
 For example with this selector `p span`, browsers firstly find all the `<span>` elements and traverse up its parent all the way up to the root to find the `<p>` element. For a particular `<span>`, as soon as it finds a `<p>`, it knows that the `<span>` matches and can stop its matching.
 
@@ -505,7 +505,7 @@ In order to have crisp, good-looking graphics that make the best of retina displ
 To overcome this problem, we can use responsive images, as specified in HTML5. It requires making available different resolution files of the same image to the browser and let it decide which image is best, using the html attribute `srcset` and optionally `sizes`, for instance:
 
 ```html
-<div responsive-background-image>  
+<div responsive-background-image>
   <img src="/images/test-1600.jpg"
     sizes="
       (min-width: 768px) 50vw,
